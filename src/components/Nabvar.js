@@ -1,28 +1,32 @@
-import { Menu } from 'antd';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { Link } from "react-router-dom";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
-const Navbar = () => (
-  <Menu mode="horizontal" defaultSelectedKeys={['mail']}>
-    <Menu.Item key="mail" icon={<MailOutlined />}>
-      Navigation One
-    </Menu.Item>
-    <Menu.SubMenu key="SubMenu" title="Navigation Two - Submenu" icon={<SettingOutlined />}>
-      <Menu.Item key="two" icon={<AppstoreOutlined />}>
-        Navigation Two
-      </Menu.Item>
-      <Menu.Item key="three" icon={<AppstoreOutlined />}>
-        Navigation Three
-      </Menu.Item>
-      <Menu.ItemGroup title="Item Group">
-        <Menu.Item key="four" icon={<AppstoreOutlined />}>
-          Navigation Four
-        </Menu.Item>
-        <Menu.Item key="five" icon={<AppstoreOutlined />}>
-          Navigation Five
-        </Menu.Item>
-      </Menu.ItemGroup>
-    </Menu.SubMenu>
-  </Menu>
-);
+function NavBar() {
+  return (
+    <Navbar bg="light" expand="lg">
+      <Container>
+        <Navbar.Brand href="#home"><Link className="Link" to='/'>Accounts_up</Link></Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Quienes somos</Nav.Link>
+            <div className='ingresa'>
+            <NavDropdown  title="Ingresa como cliente" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1"><Link  className="Link" to='/signup'>Signup</Link></NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.2">
+                <Link  className="Link" to={'/login'} >Login</Link>
+              </NavDropdown.Item>
+            </NavDropdown>
+            </div>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
 
-export default Navbar
+export default NavBar;

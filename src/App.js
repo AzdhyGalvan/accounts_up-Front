@@ -1,13 +1,21 @@
+
 import './App.css';
-import 'antd/dist/antd.css'
-import Navbar from './components/Nabvar';
-import CarouselForm from './components/Carousel';
+import NavBar from './components/Nabvar';
+import CaRousel from './components/Carousel'
+import Footer from './components/Footer'
+import RootRouter from './RootRoutes';
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <CarouselForm/>
+      <NavBar/>
+      <br/>
+      <RootRouter/>
+      <Footer/>
+     
+      
+      
+     
     </div>
   );
 }

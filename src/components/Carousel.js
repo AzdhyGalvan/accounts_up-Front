@@ -1,50 +1,47 @@
-import { Carousel, Radio } from 'antd';
-import React, { useState } from 'react';
-const contentStyle = {
-  height: '160px',
-  color: '#fff',
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: '#364d79',
-};
+import Carousel from 'react-bootstrap/Carousel';
 
-const CarouselForm = () => {
-  const [dotPosition, setDotPosition] = useState('top');
-
-  const handlePositionChange = ({ target: { value } }) => {
-    setDotPosition(value);
-  };
-
+function CaRousel() {
   return (
-    <>
-      <Radio.Group
-        onChange={handlePositionChange}
-        value={dotPosition}
-        style={{
-          marginBottom: 8,
-        }}
-      >
-        <Radio.Button value="top">Top</Radio.Button>
-        <Radio.Button value="bottom">Bottom</Radio.Button>
-        <Radio.Button value="left">Left</Radio.Button>
-        <Radio.Button value="right">Right</Radio.Button>
-      </Radio.Group>
-      <Carousel dotPosition={dotPosition}>
-        <div>
-          <h3 style={contentStyle}>1</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>2</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>3</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>4</h3>
-        </div>
-      </Carousel>
-    </>
+    <div className='carousel'>
+    <Carousel variant="dark">
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://www.freshbooks.com/wp-content/uploads/set-up-business-bank-account.jpg.optimal.jpg"
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h5>First slide label</h5>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://www.freshbooks.com/wp-content/uploads/set-up-business-bank-account.jpg.optimal.jpg"
+          alt="Second slide"
+        />
+        <Carousel.Caption>
+          <h5>Second slide label</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://www.freshbooks.com/wp-content/uploads/set-up-business-bank-account.jpg.optimal.jpg"
+          alt="Third slide"
+        />
+        <Carousel.Caption>
+          <h5>Third slide label</h5>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+    </div>
   );
-};
+}
 
-export default CarouselForm;
+export default CaRousel;
