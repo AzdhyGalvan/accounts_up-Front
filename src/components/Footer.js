@@ -1,6 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-
+import {Link} from 'react-router-dom'
 function Footer() {
   return (
     <div className='footer'>
@@ -16,7 +16,7 @@ function Footer() {
           
           </div>
           <div className='brand2'>
-            <p>Acerca de Nosotros</p>
+            <Link  to= '/aboutus'><p>Acerca de Nosotros</p></Link>
             <p>Nuestros Servicios</p>
             
           </div>
