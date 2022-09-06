@@ -2,12 +2,14 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {loginWs} from '../services/auth.ws'
+import {useNavigate} from 'react-router-dom'
 
-function Login() {
+function Login(props) {
 
 const [email,setEmail] = useState("")
 const [password,setPassword] = useState("")
 
+const navigate = useNavigate()
 
 const onChangeEmail = e =>{
 setEmail(e.target.value)
@@ -24,6 +26,10 @@ const onSubmit =(e) =>{
   loginWs({email,password})
   .then(res=>{
     console.log("El res",res)
+    props.autenticate(res.data.user)
+    navigate('/profile')
+    return alert ("Bienvenido")
+    
   })
   .catch(error=>{
     console.log("Cual es el error",error)
