@@ -24,16 +24,20 @@ const onSubmit =(e) =>{
   console.log("enviar",email,password)
 
   loginWs({email,password})
+
   .then(res=>{
-    console.log("El res",res)
-    props.autenticate(res.data.user)
-    navigate('/profile')
-    return alert ("Bienvenido")
-    
+    const {data,status,errorMessage} = res
+
+    if (status){
+      props.autenticate(res.data.user)
+      navigate('/profile')
+      return alert ("Bienvenido")
+    }
+    else{
+      alert(errorMessage)
+    }
   })
-  .catch(error=>{
-    console.log("Cual es el error",error)
-  })
+ 
 }
 
 

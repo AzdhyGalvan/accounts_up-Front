@@ -38,3 +38,15 @@ text-align: center;
   text-decoration: none;
   color: black;
 }
+
+.card{
+  padding: 10px;
+  text-align: justify;
+  
+}
+.cardCol{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-bottom: 30px;
+}
