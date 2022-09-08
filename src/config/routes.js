@@ -3,6 +3,9 @@ import Signup from '../components/Signup'
 import Login from '../components/Login'
 import AboutUs from '../components/AboutUs'
 import Profile from '../components/Profile'
+import NewSale from '../components/NewSale'
+import NewPurchase from '../components/NewPurchase'
+import NewCost from '../components/NewCost'
 
 
 
@@ -22,8 +25,17 @@ const routes = (props) =>{
     path:'/profile',element:<Profile {...props}  />
 },
 {
-    path:'/aboutus', element:<AboutUs/>
-}
+    path:'/aboutus', element:<AboutUs {...props}/>
+},
+{
+    path:'/new-sale', element:<NewSale {...props}/>
+},
+{
+    path:'/new-purchase', element:<NewPurchase {...props}/>
+},
+{
+    path:'/new-cost', element:<NewCost {...props}/>
+},
 
 ]
    

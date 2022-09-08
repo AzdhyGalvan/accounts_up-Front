@@ -4,8 +4,8 @@ import Footer from './components/Footer'
 import routes from './config/routes'
 import {Routes,Route, useNavigate} from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import Alert from 'react-bootstrap/Alert';
 import { logoutWs } from './services/auth.ws';
+
 
 
 function App() {
@@ -18,13 +18,39 @@ const navigate = useNavigate()
     localStorage.setItem('user',JSON.stringify(user))//convertir a texto
   }
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
   const handleLogOut = () =>{
+{/**<Modal.Dialog  show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Estas seguro de Cerrar Sesión</Modal.Title>
+      </Modal.Header>
+      <Modal.Footer>
+      <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button>
+
+        <Button variant="primary">Save changes</Button>
+      </Modal.Footer>
+  </Modal.Dialog>**/}
+
   logoutWs()
   .then((res)=>{
-    
+    {/**const {data,status,errorMessage} = res
+    if(status){
+    }
+    else{
+      alert(errorMessage)
+    }**/}
     navigate('/')
     setUser(null)
     localStorage.removeItem('user')
+    
+    
    
   })
   

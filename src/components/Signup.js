@@ -9,7 +9,7 @@ function Signup(props) {
   const navigate= useNavigate()
 
   const [razonSocial,setRazonS] = useState("")
-  const [person,setRegimen] = useState("Fisica")
+  const [person,setRegimen] = useState(null)
   const [rfc,setRfc] = useState("")
   const [fiscalAdress,setFiscalAd] = useState("")
   const [email,setEmail] = useState("")
@@ -20,6 +20,7 @@ const onChangeRazonS = e =>{
   setRazonS(e.target.value)
 }
 const onChangeRegimen = e =>{
+  console.log("que traes",e.target.value)
   setRegimen(e.target.value)
 }
 const onChangeRfc = e =>{
@@ -51,6 +52,8 @@ const onSubmit = (e)=>{
     navigate('/login')
     }
     else{
+      
+
       alert(errorMessage)
     }
     
@@ -69,9 +72,10 @@ const onSubmit = (e)=>{
       </Form.Group>
       <Form.Group className="mb-3" >
         <Form.Label>Regimen</Form.Label>
-        <Form.Select aria-label="Default select example">
-      <option onChange={onChangeRegimen} value={person} name='regimen'>Fisica</option>
-      <option onChange={onChangeRegimen} value={person} name='regimen'>Moral</option>
+        <Form.Select onChange={onChangeRegimen} aria-label="Default select example">
+          <option value={null}>Elije tu regimen</option>
+      <option  value={'Fisica'} name='regimen'>Fisica</option>
+      <option  value={'Moral'} name='regimen'>Moral</option>
     </Form.Select>
       </Form.Group>
       <Form.Group className="mb-3" >
