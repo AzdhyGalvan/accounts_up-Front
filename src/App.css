@@ -56,3 +56,50 @@ text-align: center;
   justify-content: space-evenly;
   padding-bottom: 30px;
 }
+
+.about{
+  text-align: justify;
+  width:800px;
+  padding-left: 20px;
+}
+.allabout{
+  display: flex;
+  flex-direction: row;
+ justify-content: space-evenly;
+}
+
+.linkFooter{
+  text-decoration: none;
+  color: gray;
+}
+.profilePic{
+text-align: right;
+line-height:0cm;
+}
+.pTable{
+ padding: 20px;
+
+ text-align: left;
+}
+
+.services{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: inherit;
+}
+
+.imgServices{
+  text-align: center;
+ 
+}
+
+h3{
+  text-align: center;
+}
+h1{
+  font-family: Didot, Didot LT STD, Hoefler Text, Garamond, Calisto MT, Times New Roman, serif;
+}
+h7{
+  color: red;
+}

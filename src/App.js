@@ -59,12 +59,13 @@ const navigate = useNavigate()
     
     
   }
+  {/***
   useEffect(()=>{//para saber si nuestro ususario esta login 
     const userLocal= localStorage.getItem('user')
     if(userLocal){
       setUser(JSON.parse(userLocal))//lo convierte a objeto
     }
-  },[])
+  },[]) */}
 
   console.log("que es mi user",user)
 

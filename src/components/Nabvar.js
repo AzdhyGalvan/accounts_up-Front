@@ -9,7 +9,7 @@ function NavBar({ user, handleLogOut }) {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/">Accounts_up</Navbar.Brand>
+        <Navbar.Brand href="/">Accounts<h7>_up</h7></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -20,9 +20,9 @@ function NavBar({ user, handleLogOut }) {
                   title="Ingresa como cliente"
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item href="/signup">Signup</NavDropdown.Item>
+                  <NavDropdown.Item href="/signup">Registro</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/login"> Login </NavDropdown.Item>
+                  <NavDropdown.Item href="/login"> Iniciar Sesión </NavDropdown.Item>
                 </NavDropdown>
               }
             </div>

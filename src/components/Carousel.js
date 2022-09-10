@@ -6,8 +6,8 @@ function CaRousel() {
     <Carousel variant="dark">
       <Carousel.Item>
         <img
-          className="d-block w-100"
-          src="https://www.freshbooks.com/wp-content/uploads/set-up-business-bank-account.jpg.optimal.jpg"
+          className="d-block w-100 "
+          src="https://www.paradavisual.com/wp-content/uploads/2019/08/cropped-despacho-virtual-contable-destacada-1-1024x576.jpg"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -29,7 +29,7 @@ function CaRousel() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://www.freshbooks.com/wp-content/uploads/set-up-business-bank-account.jpg.optimal.jpg"
+          src="https://concepto.de/wp-content/uploads/2013/05/costo.jpeg"
           alt="Third slide"
         />
         <Carousel.Caption>

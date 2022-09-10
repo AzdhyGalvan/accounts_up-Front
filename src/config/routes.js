@@ -6,6 +6,7 @@ import Profile from '../components/Profile'
 import NewSale from '../components/NewSale'
 import NewPurchase from '../components/NewPurchase'
 import NewCost from '../components/NewCost'
+import Services from '../components/Services'
 
 
 
@@ -36,7 +37,9 @@ const routes = (props) =>{
 {
     path:'/new-cost', element:<NewCost {...props}/>
 },
-
+{
+    path:'/services', element:<Services {...props}/>
+},
 ]
    
 }
