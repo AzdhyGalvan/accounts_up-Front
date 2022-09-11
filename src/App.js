@@ -13,6 +13,9 @@ function App() {
   const [user,setUser]= useState(null)
 const navigate = useNavigate()
 
+
+
+
   const autenticate = (user) =>{
     setUser(user)
     localStorage.setItem('user',JSON.stringify(user))//convertir a texto
@@ -54,18 +57,23 @@ const navigate = useNavigate()
    
   })
   
+  
 
 
     
     
   }
-  {/***
+ 
+  
   useEffect(()=>{//para saber si nuestro ususario esta login 
     const userLocal= localStorage.getItem('user')
     if(userLocal){
       setUser(JSON.parse(userLocal))//lo convierte a objeto
     }
-  },[]) */}
+    else{
+      setUser(null)
+    }
+  },[]) 
 
   console.log("que es mi user",user)
 

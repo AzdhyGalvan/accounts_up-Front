@@ -1,48 +1,99 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
+
 import { editUserWs } from "../services/user.ws";
-import { Link } from "react-router-dom";
 
-function Profile({ user }) {
-  const [isEdit, setEdit] = useState(false);
-  const [isImage, setIsimage] = useState("");
+import { uploadSingle } from "../services/upload-file";
 
-  
 
-  const onChangeimage = (e) => {
-    setIsimage(e.target.value);
-  };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    editUserWs({ ...e, isImage }).then((res) => {
-      const { status, data, errorMessage } = res;
-      if (status) {
-        user.autenticarion(data.user);
-      } else {
-        console.log("El error", errorMessage);
-      }
-    });
-  };
+function Profile({ user,autenticate }) {
+
+
+  const [isEdit,setIsEdit] = useState(false)
+  const [img, setImage] = useState(user.imageUrl);
+  const [fiscalAdressN,setFiscal] = useState(user.fiscalAdress)
+  const elInput = useRef('input')
+ 
+
+
+
+  const abrirImagen= () =>{
+    console.log("la ref",elInput)
+    elInput.current.click()
+  }
+
+    const cambiarImagen = (e) =>{
+      console.log("la ref",e.target.files[0])
+      //const sendImg ={image :e.target.files[0]}
+
+      const formData = new FormData()
+
+      formData.append('image',e.target.files[0])
+      uploadSingle(formData)
+
+      .then(res=>{
+        const {data,status,errorMessage} = res
+        
+            if(status){
+              console.log("que es mi res",res)
+              setImage(res.data.url.uri)
+                alert("Tu datos han sido actualizados")
+            }
+            else{
+              
+        
+              alert(errorMessage)
+            }
+      })
+      .catch(error=>{
+        console.log("Cual es mi error",error)
+      })
+      
+    }
+
+    
+
+    const onChangeAdress = (e) =>{
+        setFiscal(e.target.value)
+    }
+
+
+
+
+    const submitData = () =>{
+      editUserWs({imageUrl:img,fiscalAdress:fiscalAdressN})
+      .then(res=>{
+        console.log("TodoBien",res)
+        autenticate(res.data.user)
+        
+      })
+      .catch(error=>{
+        console.log("Cual es mi error",error)
+      })
+
+    }
+
+
 
   return (
     <div className="cardCol">
       <div className="card">
-        {isEdit ? "se puede editar" : "no se puede editar"}
+        
         <>
           <Card style={{ width: "18rem" }}>
-            <Card.Img
-              onClick={() => console.log("funciono")}
+            <Card.Img 
               variant="top"
-              src={user.imageUrl}
+              src={typeof img != 'string' ? URL.createObjectURL(img) : img}
             />
+           
             <Card.Body>
               <Card.Text>
                 <h6>Razon Social:</h6> {user.razonSocial}
               </Card.Text>
+              
               <Card.Text>
                 <h6>RFC:</h6> {user.rfc}
               </Card.Text>
@@ -52,6 +103,7 @@ function Profile({ user }) {
               <Card.Text>
                 <h6>Direccion Fiscal:</h6> {user.fiscalAdress}
               </Card.Text>
+              
               <Card.Text>
                 <h6>Email:</h6>
                 {user.email}
@@ -59,33 +111,37 @@ function Profile({ user }) {
             </Card.Body>
           </Card>
         </>
+        {isEdit ? 
         <>
-          <Form onSubmit={onSubmit}>
-            <Form.Group className="mb-3">
-              <Form.Label>Direccion fiscal</Form.Label>
-              <Form.Control
-                type="text"
-                name="fiscalAdress"
-                value={user.fiscalAdress}
-              />
-            </Form.Group>
-            <Form.Group controlId="formFile" className="mb-3">
-              <Form.Label>Cargar imagen de Perfil</Form.Label>
-              <Form.Control
-                onChange={onChangeimage}
-                name="imageUrl"
-                type="file"
-              />
-            </Form.Group>
-          </Form>
-        </>
-
+       
+        <div className="buttonImg">
+          <Button size="sm" variant="secondary" onClick={abrirImagen} >Editar Foto de Perfil </Button>
+          <input ref={elInput} type={'file'} hidden onChange={cambiarImagen}  ></input>
+            </div>
+            <div className="buttonImg">
+          <label><h6>Direccion Fiscal:</h6></label>
+          
+          <input name="fiscalAdress" value={fiscalAdressN} onChange={onChangeAdress}></input>
+        </div>
+       
         <Button
-          onClick={() => setEdit((prevState) => !prevState)}
+          onClick={submitData}
           variant="info"
         >
-          Editar Perfil
+          Guardar cambios
         </Button>
+        </>
+  : 
+        <Button
+        onClick={() => setIsEdit((prevState) => !prevState)}
+          variant="info"
+          size="lg"
+        >
+          Editar datos
+        </Button>
+}
+
+
       </div>
       <div>
         <Card border="primary">
@@ -97,15 +153,14 @@ function Profile({ user }) {
               <Nav.Item>
                 <Nav.Link href="#link">Lista</Nav.Link>
               </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="/new-purchase">Cargar gasto</Nav.Link>
+              </Nav.Item>
             </Nav>
           </Card.Header>
           <Card.Body>
             <Card.Title>Gastos</Card.Title>
-            <Card.Text>
-              With supporting text below as a natural lead-in to additional
-              content.
-            </Card.Text>
-            <Button variant="secondary"><Link to={'/new-purchase'}>Cargar gasto</Link></Button>
+
           </Card.Body>
         </Card>
         <br />
@@ -116,17 +171,15 @@ function Profile({ user }) {
                 <Nav.Link href="#first">Buscar</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="#link">Lista</Nav.Link>
+                <Nav.Link href="/list-costs">Lista</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="/new-cost">Cargar Costo</Nav.Link>
               </Nav.Item>
             </Nav>
           </Card.Header>
           <Card.Body>
             <Card.Title>Costos</Card.Title>
-            <Card.Text>
-              With supporting text below as a natural lead-in to additional
-              content.
-            </Card.Text>
-            <Button variant="primary"><Link to={'/new-cost'} >Cargar Costo</Link></Button>
           </Card.Body>
         </Card>
         <br />
@@ -137,17 +190,15 @@ function Profile({ user }) {
                 <Nav.Link href="#first">Buscar</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="#link">Lista</Nav.Link>
+                <Nav.Link href="/list-ventas">Lista</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="/new-sale">Cargar Venta</Nav.Link>
               </Nav.Item>
             </Nav>
           </Card.Header>
           <Card.Body>
             <Card.Title>Ventas</Card.Title>
-            <Card.Text>
-              With supporting text below as a natural lead-in to additional
-              content.
-            </Card.Text>
-            <Button variant="primary"><Link to='/new-sale'> Cargar Venta</Link></Button>
           </Card.Body>
         </Card>
       </div>

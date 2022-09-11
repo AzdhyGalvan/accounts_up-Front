@@ -34,7 +34,6 @@ function NewCost(props){
         
             if(status){
               console.log("que es mi res",res)
-            props.autenticate(res.data.user)
                 alert("Tu costo se ha cargado")
             }
             else{
@@ -48,6 +47,8 @@ function NewCost(props){
 
 
     return(
+      <div>
+        <h3>Cargar Costo</h3>
     <Form className='pForm2' onSubmit={onSubmit}>
     <Form.Select onChange={onChangeMonth} aria-label="Default select example">
       <option value={null}  >Selecciona el mes que se efectuo el costo:</option>
@@ -85,6 +86,7 @@ function NewCost(props){
       </Button>
 
       </Form>
+      </div>
     )
 }
 

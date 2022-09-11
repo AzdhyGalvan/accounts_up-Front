@@ -103,3 +103,15 @@ h1{
 h7{
   color: red;
 }
+
+.buttonImg{
+  padding: 10px;
+  text-align: center;
+}
+
+.tableA{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
