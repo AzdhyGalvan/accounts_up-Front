@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import { editUserWs } from "../services/user.ws";
 
 import { uploadSingle } from "../services/upload-file";
+import { Link } from "react-router-dom";
 
 
 
@@ -123,7 +124,7 @@ function Profile({ user,autenticate }) {
           
           <input name="fiscalAdress" value={fiscalAdressN} onChange={onChangeAdress}></input>
         </div>
-       
+       <br/>
         <Button
           onClick={submitData}
           variant="info"
@@ -132,6 +133,7 @@ function Profile({ user,autenticate }) {
         </Button>
         </>
   : 
+  
         <Button
         onClick={() => setIsEdit((prevState) => !prevState)}
           variant="info"
@@ -148,13 +150,10 @@ function Profile({ user,autenticate }) {
           <Card.Header>
             <Nav variant="pills" defaultActiveKey="#first">
               <Nav.Item>
-                <Nav.Link href="#first">Buscar</Nav.Link>
+                <Nav.Link><Link className='linkFooter2' to={"/list-purchases"}>Lista</Link></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="#link">Lista</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/new-purchase">Cargar gasto</Nav.Link>
+                <Nav.Link><Link className='linkFooter2' to={"/new-purchase"}>Cargar gasto</Link></Nav.Link>
               </Nav.Item>
             </Nav>
           </Card.Header>
@@ -168,13 +167,10 @@ function Profile({ user,autenticate }) {
           <Card.Header>
             <Nav variant="pills" defaultActiveKey="#first">
               <Nav.Item>
-                <Nav.Link href="#first">Buscar</Nav.Link>
+                <Nav.Link><Link className='linkFooter' to={"/list-costs"} >Lista</Link></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/list-costs">Lista</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/new-cost">Cargar Costo</Nav.Link>
+                <Nav.Link><Link className='linkFooter' to={"/new-cost"} >Cargar Costo</Link></Nav.Link>
               </Nav.Item>
             </Nav>
           </Card.Header>
@@ -187,13 +183,10 @@ function Profile({ user,autenticate }) {
           <Card.Header>
             <Nav variant="pills" defaultActiveKey="#first">
               <Nav.Item>
-                <Nav.Link href="#first">Buscar</Nav.Link>
+                <Nav.Link><Link className='linkFooter' to={"/list-ventas"} >Lista</Link></Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/list-ventas">Lista</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/new-sale">Cargar Venta</Nav.Link>
+                <Nav.Link><Link className='linkFooter' to={"/new-sale"}>Cargar Venta</Link></Nav.Link>
               </Nav.Item>
             </Nav>
           </Card.Header>
@@ -201,6 +194,11 @@ function Profile({ user,autenticate }) {
             <Card.Title>Ventas</Card.Title>
           </Card.Body>
         </Card>
+
+        <br/><br/>
+
+        <Button><Link className='linkFooter' to={"/global-results"}>Resultados globales</Link></Button>
+       
       </div>
     </div>
   );

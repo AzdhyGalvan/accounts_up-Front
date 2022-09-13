@@ -9,27 +9,28 @@ function NavBar({ user, handleLogOut }) {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/">Accounts<h7>_up</h7></Navbar.Brand>
+        <Navbar.Brand ><Link className='linkFooter' to={"/"}>Accounts_<h7>up</h7></Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/aboutus">Quienes somos</Nav.Link>
+            <Nav.Link ><Link className='linkFooter' to='/aboutus'>Quienes somos..</Link> </Nav.Link>
             <div className="ingresa">
               {!user && 
                 <NavDropdown
                   title="Ingresa como cliente"
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item href="/signup">Registro</NavDropdown.Item>
+                  <NavDropdown.Item ><Link className='linkFooter' to={"/signup"}>Registro</Link> </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/login"> Iniciar Sesión </NavDropdown.Item>
+                  <NavDropdown.Item><Link className='linkFooter' to={"/login"}>Iniciar Sesión</Link></NavDropdown.Item>
                 </NavDropdown>
               }
             </div>
           </Nav>
           {user && 
                 <Nav className="me-auto">
-                <Nav ><Link to={'/profile'}>{user.razonSocial} <br/> {user.rfc}</Link></Nav>
+                <Nav><h7>Bienvenido</h7></Nav>
+                <Nav ><Link className='linkFooter' to={'/profile'}>{user.razonSocial} <br/> {user.rfc}</Link></Nav>
                 <Nav onClick={handleLogOut}>Salir</Nav>
                 </Nav>
                 }
