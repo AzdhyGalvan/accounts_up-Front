@@ -1,13 +1,16 @@
-import Form from 'react-bootstrap/Form';
-import {costsResults} from '../services/results.ws'
+import {salesResults,purchasesResults,costsResults} from '../services/results.ws'
 import { useEffect, useState } from 'react';
-import Table from 'react-bootstrap/Table';
+import Form from 'react-bootstrap/Form';
 
-function ResultCost(){
+function GlobalResults(){
 
+    const [listPurchase,setListPursache] = useState([])
+    const [listSales,setListSales] = useState([])
     const [listCost,setListCost] = useState([])
     const [month,setMonth] = useState(null)
-    const [all,setAll] = useState()
+    const [allPurchase,setAllPurchase] = useState()
+    const [allCost,setAllCost] = useState()
+    const [allSales,setAllSales] = useState()
 
     const onChangeMonth = e =>{
         setMonth(e.target.value)
@@ -16,25 +19,53 @@ function ResultCost(){
 
     useEffect(()=>{
         if(month != null){
+            purchasesResults({month})
+        .then(res=>{
+            setListPursache(res.data.months)
+            setAllPurchase(res.data.totalMonth)
+            console.log("Que es mi res",res)
+        })
+        }
+    },[month])
+
+    useEffect(()=>{
+        if(month != null){
+            salesResults({month})
+        .then(res=>{
+            setListSales(res.data.months)
+            setAllSales(res.data.sumall)
+            console.log("Que es mi res",res)
+        })
+        }
+    },[month])
+
+    useEffect(()=>{
+        if(month != null){
         costsResults({month})
         .then(res=>{
             setListCost(res.data.months)
-            setAll(res.data.sumall)
+            setAllCost(res.data.sumall)
             console.log("Que es mi res",res)
         })
         }
     },[month])
 
 
+    const total= allSales - (allPurchase + allCost) 
 
-    return (
+return (
         <div>
-        <h3>Lista de costos mensual</h3>
+        <h3>Estimado global por mes</h3>
 
      <div className='tableA'>  
      <div>
     
-    <p>Total mensual <h5>${all}.00</h5> </p>
+    <p>Total mensual gastos <h5>${allPurchase}.00</h5> </p>
+    <p>Total mensual costos <h5>${allCost}.00</h5> </p>
+    <p>Total mensual ventas <h5>${allSales}.00</h5> </p>
+    <br/>
+    <p><h4>Estimado Global</h4>  <h5>${total}.00   {total > 0 ? '(ganacia)' : '(perdida)'}</h5> </p>
+
     
     </div>
     <Form className='pForm2'>
@@ -56,26 +87,7 @@ function ResultCost(){
     <br/>
 
 
-   {listCost.map((cost)=>(
-    <Table striped bordered hover size="sm">
-      <thead>
-        <tr>
-          <th># Id</th>
-          <th>Monto</th>
-          <th>Proveedor</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{cost._id}</td>
-          <td>${cost.amount}.00</td>
-          <td>{cost.supplier} </td>
-          
-        </tr>
-      </tbody>
-    </Table>
-
-   ))}
+ 
    
    
 
@@ -88,4 +100,5 @@ function ResultCost(){
     )
 }
 
-export default ResultCost
+
+export default GlobalResults;

@@ -1,11 +1,11 @@
 import Form from 'react-bootstrap/Form';
-import {costsResults} from '../services/results.ws'
+import {purchasesResults} from '../services/results.ws'
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 
-function ResultCost(){
+function ResultPurchase(){
 
-    const [listCost,setListCost] = useState([])
+    const [listPurchase,setListPursache] = useState([])
     const [month,setMonth] = useState(null)
     const [all,setAll] = useState()
 
@@ -16,10 +16,10 @@ function ResultCost(){
 
     useEffect(()=>{
         if(month != null){
-        costsResults({month})
+            purchasesResults({month})
         .then(res=>{
-            setListCost(res.data.months)
-            setAll(res.data.sumall)
+            setListPursache(res.data.months)
+            setAll(res.data.totalMonth)
             console.log("Que es mi res",res)
         })
         }
@@ -29,7 +29,7 @@ function ResultCost(){
 
     return (
         <div>
-        <h3>Lista de costos mensual</h3>
+        <h3>Lista de Gastos mensual</h3>
 
      <div className='tableA'>  
      <div>
@@ -56,21 +56,22 @@ function ResultCost(){
     <br/>
 
 
-   {listCost.map((cost)=>(
+   {listPurchase.map((cost)=>(
     <Table striped bordered hover size="sm">
       <thead>
         <tr>
-          <th># Id</th>
-          <th>Monto</th>
-          <th>Proveedor</th>
+          <th>Nomina</th>
+          <th>Impuestos</th>
+          <th>Luz</th>
+          <th>Telefono</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>{cost._id}</td>
-          <td>${cost.amount}.00</td>
-          <td>{cost.supplier} </td>
-          
+          <td>${cost.payroll}.00</td>
+          <td>${cost.taxes}.00</td>
+          <td>${cost.ligth}.00</td>
+          <td>${cost.phone}.00</td>          
         </tr>
       </tbody>
     </Table>
@@ -88,4 +89,4 @@ function ResultCost(){
     )
 }
 
-export default ResultCost
+export default ResultPurchase;

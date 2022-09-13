@@ -2,17 +2,41 @@ import Form from 'react-bootstrap/Form';
 import {salesResults} from '../services/results.ws'
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
+import {deleteSaleWs} from '../services/sales.ws'
+import Item from 'antd/lib/list/Item';
 
-function ResultSales(){
+function ResultSales(props){
 
     const [listSales,setListSales] = useState([])
     const [month,setMonth] = useState(null)
     const [all,setAll] = useState()
+    const [delet,setDelet] = useState({})
+
+
 
     const onChangeMonth = e =>{
         setMonth(e.target.value)
         console.log("Que es mi e",e.target.value)
     }
+
+
+   
+
+const onClickDelete =(id,idArr)=>{
+
+  deleteSaleWs(id)
+  .then(()=>{
+    
+    const newArr = listSales
+    console.log("Se ha eliminado",newArr)
+    setListSales(newArr.filter(item=>item._id != id))
+  })
+  .catch(error=>{
+    console.log("Cual es mi error",error)
+  })
+}
+
+
 
     useEffect(()=>{
         if(month != null){
@@ -56,7 +80,7 @@ function ResultSales(){
     <br/>
 
 
-   {listSales.map((cost)=>(
+   {listSales.map((cost,index)=>(
     <Table striped bordered hover size="sm">
       <thead>
         <tr>
@@ -70,6 +94,10 @@ function ResultSales(){
           <td>{cost._id}</td>
           <td>${cost.amount}.00</td>
           <td>{cost.client} </td>
+          <td>Editar</td>
+          <td><button onClick={(e)=> {
+            e.preventDefault()
+             onClickDelete(cost._id,index)}}>Borrar</button></td>
           
         </tr>
       </tbody>

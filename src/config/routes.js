@@ -9,6 +9,8 @@ import NewCost from '../components/NewCost'
 import Services from '../components/Services'
 import ResultCost from '../components/ResultsCost'
 import ResultSales from '../components/ResultsSales'
+import ResultsPurchases from '../components/ResultsPurchases'
+import GlobalResults from '../components/GlobalResults'
 
 
 
@@ -47,6 +49,12 @@ const routes = (props) =>{
 },
 {
     path:'/list-ventas', element:<ResultSales {...props}/>
+},
+{
+    path:'/list-purchases', element:<ResultsPurchases {...props}/>
+},
+{
+    path:'/global-results', element:<GlobalResults {...props}/>
 },
 ]
    
