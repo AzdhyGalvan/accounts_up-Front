@@ -2,6 +2,7 @@ import Form from 'react-bootstrap/Form';
 import {costsResults} from '../services/results.ws'
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
+import {deleteCostWs} from '../services/cost.ws'
 
 function ResultCost(){
 
@@ -14,6 +15,18 @@ function ResultCost(){
         setMonth(e.target.value)
         console.log("Que es mi e",e.target.value)
     }
+
+    const onClickDelete = (id, idArr) => {
+      deleteCostWs(id)
+        .then(() => {
+          const newArr = listCost;
+          console.log("Se ha eliminado", newArr);
+          setListCost(newArr.filter((item) => item._id != id));
+        })
+        .catch((error) => {
+          console.log("Cual es mi error", error);
+        });
+    };
 
     useEffect(()=>{
         if(month != null){
@@ -57,7 +70,7 @@ function ResultCost(){
     <br/>
 
 
-   {listCost.map((cost)=>(
+   {listCost.map((cost,index)=>(
     <Table striped bordered hover size="sm">
       <thead>
         <tr>
@@ -71,7 +84,20 @@ function ResultCost(){
           <td>{cost._id}</td>
           <td>${cost.amount}.00</td>
           <td>{cost.supplier} </td>
+          {isEdit ? 
+              <>
+              <td><label>Monto</label> <input name="amount" ></input></td>
+              <td><label>Proveedor</label> <input name="client" ></input></td>
+              <td><button  >Guardar Cambios</button></td>
+                  
+              <td><button onClick={(e)=> {
+            e.preventDefault()
+             onClickDelete(cost._id,index)}}>Borrar</button></td>
           
+          </>
+          :
+          <td><button onClick={() => setIsEdit((prevState) => !prevState)}>Editar</button></td>
+          }
         </tr>
       </tbody>
     </Table>
