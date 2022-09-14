@@ -64,10 +64,10 @@ function NewPurchase(props){
 
     return(
         <div>
-     <h3>Cargar venta</h3> 
+     <h3>Cargar Gasto</h3> 
     <Form className='pForm2' onSubmit={onSubmit}>
     <Form.Select onChange={onChangeMonth} aria-label="Default select example">
-      <option value={null}  >Selecciona el mes que se efectuo el costo:</option>
+      <option value={null}  >Selecciona el mes que se efectuo el gasto:</option>
       <option value="Enero" name='month' >Enero</option>
       <option value="Febrero"  name='month'>Febrero</option>
       <option value="Marzo"  name='month'>Marzo</option>
@@ -83,7 +83,7 @@ function NewPurchase(props){
     </Form.Select>
     <br/>
     <Form.Select onChange={onChangeYear} aria-label="Default select example">
-      <option value={null}>Selecciona el año que se efectuo el costo:</option>
+      <option value={null}>Selecciona el año que se efectuo el gasto:</option>
       <option value="2021"  name='year'>2021</option>
       <option value="2022"  name='year'>2022</option>
     </Form.Select>

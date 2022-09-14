@@ -29,8 +29,8 @@ function NavBar({ user, handleLogOut }) {
           </Nav>
           {user && 
                 <Nav className="me-auto">
-                <Nav><h7>Bienvenido</h7></Nav>
-                <Nav ><Link className='linkFooter' to={'/profile'}>{user.razonSocial} <br/> {user.rfc}</Link></Nav>
+                
+                <Nav ><Link className='linkFooter' to={'/profile'}><h7>{user.razonSocial} <br/> {user.rfc} </h7></Link></Nav>
                 <Nav onClick={handleLogOut}>Salir</Nav>
                 </Nav>
                 }

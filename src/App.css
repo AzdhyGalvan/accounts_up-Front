@@ -115,3 +115,38 @@ h7{
   justify-content: center;
 
 }
+.linkFooter2{
+  text-decoration: none;
+  color: black;
+}
+.cards{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 150px;
+}
+
+.buttonRes{
+text-decoration: none;
+color: beige;
+padding-top: 60px;
+
+ 
+
+}
+.cardi{
+  padding: 10px;
+}
+
+.textA{
+  text-align: center;
+  color: brown;
+}
+
+.padImg{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  
+
+}

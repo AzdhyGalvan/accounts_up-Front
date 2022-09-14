@@ -29,7 +29,7 @@ function ResultPurchase(){
 
     return (
         <div>
-        <h3>Lista de Gastos mensual</h3>
+        <h3>Lista de Gastos Mensual</h3>
 
      <div className='tableA'>  
      <div>

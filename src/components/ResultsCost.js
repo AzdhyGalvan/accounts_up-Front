@@ -8,6 +8,7 @@ function ResultCost(){
     const [listCost,setListCost] = useState([])
     const [month,setMonth] = useState(null)
     const [all,setAll] = useState()
+    const [isEdit, setIsEdit] = useState(false);
 
     const onChangeMonth = e =>{
         setMonth(e.target.value)
@@ -29,7 +30,7 @@ function ResultCost(){
 
     return (
         <div>
-        <h3>Lista de costos mensual</h3>
+        <h3>Lista de Costos Mensual</h3>
 
      <div className='tableA'>  
      <div>
