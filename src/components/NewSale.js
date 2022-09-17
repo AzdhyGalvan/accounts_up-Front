@@ -2,9 +2,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import {newSaleWs} from '../services/sales.ws'
-
+import { useNavigate} from 'react-router-dom'
 function NewSale(props){
-
+  const navigate= useNavigate()
     const [month,setMonth] = useState(null)
     const [year,setYear] = useState (null)
     const [client,setClient] = useState("")
@@ -34,7 +34,8 @@ function NewSale(props){
         
             if(status){
               console.log("que es mi res",res)
-                alert("Tu costo se ha cargado")
+                alert("Tu venta se ha cargado")
+                navigate('/list-ventas')
             }
             else{
               
@@ -48,10 +49,10 @@ function NewSale(props){
 
     return(
 <div>
-     <h3>Cargar venta</h3> 
+     <h3>Cargar Venta</h3> 
     <Form className='pForm2' onSubmit={onSubmit}>
     <Form.Select onChange={onChangeMonth} aria-label="Default select example">
-      <option value={null}  >Selecciona el mes que se efectuo el costo:</option>
+      <option value={null}  >Selecciona el mes que se efectuo la venta:</option>
       <option value="Enero" name='month' >Enero</option>
       <option value="Febrero"  name='month'>Febrero</option>
       <option value="Marzo"  name='month'>Marzo</option>
@@ -67,7 +68,7 @@ function NewSale(props){
     </Form.Select>
     <br/>
     <Form.Select onChange={onChangeYear} aria-label="Default select example">
-      <option value={null}>Selecciona el año que se efectuo el costo:</option>
+      <option value={null}>Selecciona el año que se efectuo la venta:</option>
       <option value="2021"  name='year'>2021</option>
       <option value="2022"  name='year'>2022</option>
     </Form.Select>
@@ -81,7 +82,7 @@ function NewSale(props){
     </Form.Group>
 
     <Button variant="primary" type="submit">
-        Submit
+        Guardar
       </Button>
 
       </Form>

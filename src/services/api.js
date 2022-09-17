@@ -5,7 +5,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 const baseURL = isProduction ? "https://accountsup.herokuapp.com/api" : "http://localhost:5005/api";
 
 export const api = axios.create({
-    baseURL, //'https://accountsup.herokuapp.com/api',
+    baseURL,
     withCredentials:true,
     timeout:10000
 })

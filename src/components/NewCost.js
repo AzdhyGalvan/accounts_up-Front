@@ -2,9 +2,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import {newCostWs} from '../services/cost.ws'
-
+import { useNavigate} from 'react-router-dom'
 function NewCost(props){
-
+  const navigate= useNavigate()
     const [month,setMonth] = useState(null)
     const [year,setYear] = useState (null)
     const [supplier,setSupplier] = useState("")
@@ -35,6 +35,7 @@ function NewCost(props){
             if(status){
               console.log("que es mi res",res)
                 alert("Tu costo se ha cargado")
+                navigate('/list-costs')
             }
             else{
               
@@ -82,10 +83,12 @@ function NewCost(props){
     </Form.Group>
 
     <Button variant="primary" type="submit">
-        Submit
+        Guardar
       </Button>
 
       </Form>
+
+
       </div>
     )
 }

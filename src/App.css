@@ -101,6 +101,12 @@ h1{
   font-family: Didot, Didot LT STD, Hoefler Text, Garamond, Calisto MT, Times New Roman, serif;
 }
 h7{
+  color: gray;
+}
+h6{
+  color: blue;
+}
+h8{
   color: red;
 }
 
@@ -115,3 +121,40 @@ h7{
   justify-content: center;
 
 }
+.linkFooter2{
+  text-decoration: none;
+  color: black;
+}
+.cards{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 150px;
+}
+
+.buttonRes{
+text-decoration: none;
+color: beige;
+padding-top: 60px;
+
+ 
+
+}
+.cardi{
+  padding: 10px;
+}
+
+.textA{
+  text-align: center;
+  color: rgb(19, 8, 184);
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.padImg{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  
+
+}
+

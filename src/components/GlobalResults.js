@@ -50,12 +50,13 @@ function GlobalResults(){
         }
     },[month])
 
-
+    const all = 0
     const total= allSales - (allPurchase + allCost) 
+    
 
 return (
         <div>
-        <h3>Estimado global por mes</h3>
+        <h3>Estado de Resultados</h3>
 
      <div className='tableA'>  
      <div>
@@ -64,7 +65,7 @@ return (
     <p>Total mensual costos <h5>${allCost}.00</h5> </p>
     <p>Total mensual ventas <h5>${allSales}.00</h5> </p>
     <br/>
-    <p><h4>Estimado Global</h4>  <h5>${total}.00   {total > 0 ? '(ganacia)' : '(perdida)'}</h5> </p>
+    <p><h4>Resultado:</h4><h5>${all + total}.00   {total > 0 ? '(ganacia)' : '(perdida)'}</h5> </p>
 
     
     </div>
