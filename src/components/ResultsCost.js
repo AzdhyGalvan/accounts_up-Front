@@ -2,7 +2,7 @@ import Form from 'react-bootstrap/Form';
 import {costsResults} from '../services/results.ws'
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import {deleteCostWs} from '../services/cost.ws'
+import {deleteCostWs, editCostWs} from '../services/cost.ws'
 
 function ResultCost(){
 
@@ -10,6 +10,18 @@ function ResultCost(){
     const [month,setMonth] = useState(null)
     const [all,setAll] = useState()
     const [isEdit, setIsEdit] = useState(false);
+    const [editData,setEditdata] = useState ({id:'',amount:'',supplier:''})
+  
+
+
+    const onChangeAmount =(amount,id)=>{
+      setEditdata({...editData,id,amount})
+    }
+    
+    const onChangeSupplier =(supplier,id)=>{
+      setEditdata({...editData,id,supplier})
+      
+    }
 
     const onChangeMonth = e =>{
         setMonth(e.target.value)
@@ -27,6 +39,23 @@ function ResultCost(){
           console.log("Cual es mi error", error);
         });
     };
+
+    const submitData = (id) =>{
+
+      if(id !== editData.id){
+        return
+      }
+          editCostWs(id,editData)
+          .then(res=>{
+            console.log("TodoBien",res) 
+            
+          })
+          .catch(error=>{
+            console.log("Cual es mi error",error)
+          })
+        }
+
+
 
     useEffect(()=>{
         if(month != null){
@@ -86,10 +115,10 @@ function ResultCost(){
           <td>{cost.supplier} </td>
           {isEdit ? 
               <>
-              <td><label>Monto</label> <input name="amount" ></input></td>
-              <td><label>Proveedor</label> <input name="client" ></input></td>
-              <td><button  >Guardar Cambios</button></td>
-                  
+              <td><label>Monto</label> <input name="amount" value={editData.id===cost._id ? editData.amount : cost.amount } onChange={(e)=>onChangeAmount(e.target.value,cost._id)}></input></td>
+              <td><label>Proveedor</label> <input name="supplier" value={editData.id===cost._id ? editData.supplier : cost.supplier } onChange={(e)=>onChangeSupplier(e.target.value,cost._id)}></input></td>
+              <td><button onClick={(e)=>{
+                submitData(cost._id) }} >Guardar</button></td>
               <td><button onClick={(e)=> {
             e.preventDefault()
              onClickDelete(cost._id,index)}}>Borrar</button></td>

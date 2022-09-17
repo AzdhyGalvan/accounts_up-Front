@@ -2,9 +2,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import {newSaleWs} from '../services/sales.ws'
-
+import { useNavigate} from 'react-router-dom'
 function NewSale(props){
-
+  const navigate= useNavigate()
     const [month,setMonth] = useState(null)
     const [year,setYear] = useState (null)
     const [client,setClient] = useState("")
@@ -35,6 +35,7 @@ function NewSale(props){
             if(status){
               console.log("que es mi res",res)
                 alert("Tu venta se ha cargado")
+                navigate('/list-ventas')
             }
             else{
               
@@ -81,7 +82,7 @@ function NewSale(props){
     </Form.Group>
 
     <Button variant="primary" type="submit">
-        Submit
+        Guardar
       </Button>
 
       </Form>

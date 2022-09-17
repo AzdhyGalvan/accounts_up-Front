@@ -9,7 +9,7 @@ function NavBar({ user, handleLogOut }) {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand ><Link className='linkFooter' to={"/"}>Accounts_<h7>up</h7></Link></Navbar.Brand>
+        <Navbar.Brand ><Link className='linkFooter' to={"/"}>Accounts_<h8>up</h8></Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -30,7 +30,7 @@ function NavBar({ user, handleLogOut }) {
           {user && 
                 <Nav className="me-auto">
                 
-                <Nav ><Link className='linkFooter' to={'/profile'}><h7>{user.razonSocial} <br/> {user.rfc} </h7></Link></Nav>
+                <Nav ><Link className='linkFooter' to={'/profile'}><h6>{user.razonSocial} <br/> {user.rfc} </h6></Link></Nav>
                 <Nav onClick={handleLogOut}>Salir</Nav>
                 </Nav>
                 }

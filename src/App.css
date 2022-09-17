@@ -101,6 +101,12 @@ h1{
   font-family: Didot, Didot LT STD, Hoefler Text, Garamond, Calisto MT, Times New Roman, serif;
 }
 h7{
+  color: gray;
+}
+h6{
+  color: blue;
+}
+h8{
   color: red;
 }
 
@@ -140,7 +146,8 @@ padding-top: 60px;
 
 .textA{
   text-align: center;
-  color: brown;
+  color: rgb(19, 8, 184);
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .padImg{
@@ -150,3 +157,4 @@ padding-top: 60px;
   
 
 }
+

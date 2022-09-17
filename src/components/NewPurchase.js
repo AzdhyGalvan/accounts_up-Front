@@ -3,10 +3,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import  {newPurchaseWs} from '../services/purchase.ws'
-
+import { useNavigate} from 'react-router-dom'
 
 function NewPurchase(props){
-
+    const navigate= useNavigate()
 
     const [month,setMonth] = useState(null)
     const [year,setYear] = useState (null)
@@ -46,6 +46,7 @@ function NewPurchase(props){
             if(status){
               console.log("que es mi res",res)
                 alert("Tu gasto se ha cargado")
+                navigate('/list-purchases')
             }
             else{
               

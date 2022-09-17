@@ -9,22 +9,22 @@ function ResultSales({ user,autenticate }) {
   const [month, setMonth] = useState(null);
   const [all, setAll] = useState();
   const [isEdit, setIsEdit] = useState(false);
-  const [amount,setAmount] = useState ("")
-  const [client,setClient] = useState ("")
+  const [editData,setEditdata] = useState ({id:'',amount:'',client:''})
+  
 
 
-const onChangeAmount =(e)=>{
-  setAmount(e.target.value)
+const onChangeAmount =(amount,id)=>{
+  setEditdata({...editData,id,amount})
 }
 
-const onChangeClient =(e)=>{
-  setClient(e.target.value)
-  console.log("Que es mi e", e.target.value);
+const onChangeClient =(client,id)=>{
+  setEditdata({...editData,id,client})
+  
 }
 
   const onChangeMonth = (e) => {
     setMonth(e.target.value);
-    console.log("Que es mi e", e.target.value);
+    
     
   };
 
@@ -33,7 +33,7 @@ const onChangeClient =(e)=>{
       .then(() => {
         const newArr = listSales;
         console.log("Se ha eliminado", newArr);
-        setListSales(newArr.filter((item) => item._id != id));
+        setListSales(newArr.filter((item) => item._id !== id));
       })
       .catch((error) => {
         console.log("Cual es mi error", error);
@@ -41,9 +41,14 @@ const onChangeClient =(e)=>{
   };
 
   const submitData = (id) =>{
-    editSaleWs({id,amount,client})
+
+if(id !== editData.id){
+  return
+}
+    editSaleWs(id,editData)
     .then(res=>{
       console.log("TodoBien",res) 
+      
     })
     .catch(error=>{
       console.log("Cual es mi error",error)
@@ -137,11 +142,11 @@ const onChangeClient =(e)=>{
 
               {isEdit ? 
               <>
-              <td><label>Monto</label> <input name="amount" value={amount} onChange={onChangeAmount}></input></td>
-              <td><label>Cliente</label> <input name="client" value={client} onChange={onChangeClient}></input></td>
+              <td><label>Monto</label> <input name="amount" value={editData.id===cost._id ? editData.amount : cost.amount } onChange={(e)=>onChangeAmount(e.target.value,cost._id)}></input></td>
+              <td><label>Cliente</label> <input name="client" value={editData.id===cost._id ? editData.client : cost.client } onChange={(e)=>onChangeClient(e.target.value,cost._id)}></input></td>
               <td><button onClick={(e)=>{
-                e.preventDefault()
-                submitData(cost._id) }} >Guardar Cambios</button></td>
+          
+                submitData(cost._id) }} >Guardar </button></td>
                   
               <td><button onClick={(e)=> {
             e.preventDefault()

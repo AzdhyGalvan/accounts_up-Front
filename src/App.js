@@ -43,25 +43,10 @@ const navigate = useNavigate()
 
   logoutWs()
   .then((res)=>{
-    {/**const {data,status,errorMessage} = res
-    if(status){
-    }
-    else{
-      alert(errorMessage)
-    }**/}
     navigate('/')
     setUser(null)
     localStorage.removeItem('user')
-    
-    
-   
   })
-  
-  
-
-
-    
-    
   }
  
   
