@@ -60,7 +60,7 @@ const navigate = useNavigate()
     }
   },[]) 
 
-  console.log("que es mi user",user)
+  
 
 
   return (

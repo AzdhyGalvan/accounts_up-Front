@@ -25,7 +25,7 @@ function ResultCost(){
 
     const onChangeMonth = e =>{
         setMonth(e.target.value)
-        console.log("Que es mi e",e.target.value)
+       
     }
 
     const onClickDelete = (id, idArr) => {
@@ -63,7 +63,7 @@ function ResultCost(){
         .then(res=>{
             setListCost(res.data.months)
             setAll(res.data.sumall)
-            console.log("Que es mi res",res)
+            
         })
         }
     },[month])

@@ -11,7 +11,7 @@ function CaRousel() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h5>Somos una firma confiable en la que puedes confiar</h5>
+          <h5>Somos una firma confiable</h5>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>

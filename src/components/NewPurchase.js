@@ -15,7 +15,7 @@ function NewPurchase(props){
     const [ligth,setLigth] = useState("")
     const [phone,setPhone] = useState("")
 
-    console.log("que es mi props.user",props.user)
+ 
 
     const onChangeMonth = e =>{
         setMonth(e.target.value)
@@ -38,13 +38,13 @@ function NewPurchase(props){
 
     const onSubmit= (e) =>{
         e.preventDefault()
-        console.log({month,year,payroll,taxes,ligth,phone})
+        
         newPurchaseWs({month,year,payroll,taxes,ligth,phone})
         .then(res=>{
             const {data,status,errorMessage} = res
         
             if(status){
-              console.log("que es mi res",res)
+              
                 alert("Tu gasto se ha cargado")
                 navigate('/list-purchases')
             }

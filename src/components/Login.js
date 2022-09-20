@@ -21,8 +21,7 @@ const onChangePassword = e =>{
 const onSubmit =(e) =>{
   e.preventDefault()
  
-  console.log("enviar",email,password)
-
+  
   loginWs({email,password})
 
   .then(res=>{

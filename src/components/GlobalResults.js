@@ -14,7 +14,7 @@ function GlobalResults(){
 
     const onChangeMonth = e =>{
         setMonth(e.target.value)
-        console.log("Que es mi e",e.target.value)
+        
     }
 
     useEffect(()=>{
@@ -23,7 +23,7 @@ function GlobalResults(){
         .then(res=>{
             setListPursache(res.data.months)
             setAllPurchase(res.data.totalMonth)
-            console.log("Que es mi res",res)
+            
         })
         }
     },[month])
@@ -34,7 +34,7 @@ function GlobalResults(){
         .then(res=>{
             setListSales(res.data.months)
             setAllSales(res.data.sumall)
-            console.log("Que es mi res",res)
+            
         })
         }
     },[month])
@@ -45,7 +45,7 @@ function GlobalResults(){
         .then(res=>{
             setListCost(res.data.months)
             setAllCost(res.data.sumall)
-            console.log("Que es mi res",res)
+            
         })
         }
     },[month])

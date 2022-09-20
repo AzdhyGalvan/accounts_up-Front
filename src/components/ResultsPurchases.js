@@ -32,7 +32,7 @@ function ResultPurchase(){
 
     const onChangeMonth = e =>{
         setMonth(e.target.value)
-        console.log("Que es mi e",e.target.value)
+        
     }
 
 
@@ -40,7 +40,7 @@ function ResultPurchase(){
       deletePurchaseWs(id)
         .then(() => {
           const newArr = listPurchase;
-          console.log("Se ha eliminado", newArr);
+       
           setListPursache(newArr.filter((item) => item._id !== id));
         })
         .catch((error) => {
@@ -71,7 +71,7 @@ function ResultPurchase(){
         .then(res=>{
             setListPursache(res.data.months)
             setAll(res.data.totalMonth)
-            console.log("Que es mi res",res)
+            
         })
         }
     },[month])
