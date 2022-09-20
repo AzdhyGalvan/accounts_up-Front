@@ -27,13 +27,13 @@ function NewSale(props){
 
     const onSubmit= (e) =>{
         e.preventDefault()
-        console.log({month,year,client,amount})
+        
         newSaleWs({month,year,client,amount})
         .then(res=>{
             const {data,status,errorMessage} = res
         
             if(status){
-              console.log("que es mi res",res)
+           
                 alert("Tu venta se ha cargado")
                 navigate('/list-ventas')
             }

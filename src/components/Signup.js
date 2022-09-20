@@ -20,7 +20,7 @@ const onChangeRazonS = e =>{
   setRazonS(e.target.value)
 }
 const onChangeRegimen = e =>{
-  console.log("que traes",e.target.value)
+  
   setRegimen(e.target.value)
 }
 const onChangeRfc = e =>{
@@ -41,13 +41,13 @@ const onChangeConfirmpassword = e =>{
 
 const onSubmit = (e)=>{
   e.preventDefault()
-  console.log({razonSocial,person,rfc,fiscalAdress,email,password,confirmPassword})
+  
   signupWs({razonSocial,person,rfc,fiscalAdress,email,password,confirmPassword})
   .then(res=>{
     const {data,status,errorMessage} = res
 
     if(status){
-      console.log("que es mi res",res)
+      
     props.autenticate(res.data.user)
     navigate('/login')
     }

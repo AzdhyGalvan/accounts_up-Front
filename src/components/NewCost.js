@@ -10,7 +10,7 @@ function NewCost(props){
     const [supplier,setSupplier] = useState("")
     const [amount,setAmount] = useState("")
 
-    console.log("que es mi props.user",props.user)
+    
 
     const onChangeMonth = e =>{
         setMonth(e.target.value)
@@ -27,13 +27,13 @@ function NewCost(props){
 
     const onSubmit= (e) =>{
         e.preventDefault()
-        console.log({month,year,supplier,amount})
+        
         newCostWs({month,year,supplier,amount})
         .then(res=>{
             const {data,status,errorMessage} = res
         
             if(status){
-              console.log("que es mi res",res)
+             
                 alert("Tu costo se ha cargado")
                 navigate('/list-costs')
             }

@@ -32,7 +32,7 @@ const onChangeClient =(client,id)=>{
     deleteSaleWs(id)
       .then(() => {
         const newArr = listSales;
-        console.log("Se ha eliminado", newArr);
+        
         setListSales(newArr.filter((item) => item._id !== id));
       })
       .catch((error) => {
@@ -61,7 +61,7 @@ if(id !== editData.id){
       salesResults({ month }).then((res) => {
         setListSales(res.data.months);
         setAll(res.data.sumall);
-        console.log("Que es mi res", res);
+        
       });
     }
   }, [month]);

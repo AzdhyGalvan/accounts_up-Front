@@ -15,12 +15,12 @@ function Profile({ user, autenticate }) {
   const elInput = useRef("input");
 
   const abrirImagen = () => {
-    console.log("la ref", elInput);
+   
     elInput.current.click();
   };
 
   const cambiarImagen = (e) => {
-    console.log("la ref", e.target.files[0]);
+    
     //const sendImg ={image :e.target.files[0]}
 
     const formData = new FormData();
@@ -31,7 +31,7 @@ function Profile({ user, autenticate }) {
         const { data, status, errorMessage } = res;
 
         if (status) {
-          console.log("que es mi res", res);
+          
           setImage(res.data.url.uri);
           alert("Tu datos han sido actualizados");
         } else {
@@ -50,7 +50,7 @@ function Profile({ user, autenticate }) {
   const submitData = () => {
     editUserWs({ imageUrl: img, fiscalAdress: fiscalAdressN })
       .then((res) => {
-        console.log("TodoBien", res);
+       
         autenticate(res.data.user);
       })
       .catch((error) => {
